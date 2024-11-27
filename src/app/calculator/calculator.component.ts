@@ -34,4 +34,7 @@ multiply(a: number, b: number) {
   divide(a: number, b: number) {
     this.result = this.calculatorService.divide(a,b);
   }
+  squareRoot(value:number)  {
+    this.result = this.calculatorService.calculateSquareRoot(value);
+  }
 }

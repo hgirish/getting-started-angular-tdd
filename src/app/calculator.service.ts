@@ -19,4 +19,7 @@ export class CalculatorService {
   divide(a:number, b:number): number | Error {
     return a / b;
   }
+  calculateSquareRoot(value:number):number{
+    return Math.sqrt(value);
+  }
 }
