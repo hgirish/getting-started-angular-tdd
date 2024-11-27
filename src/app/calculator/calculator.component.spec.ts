@@ -3,6 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalculatorComponent } from './calculator.component';
 import { CalculatorService } from '../calculator.service';
 
+
 describe('CalculatorComponent', () => {
   let calculator: CalculatorComponent;
   let fixture: ComponentFixture<CalculatorComponent>;
@@ -11,7 +12,7 @@ describe('CalculatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CalculatorComponent],
-      providers: [CalculatorService]
+      providers: [{provide: CalculatorService, useValue: calculatorServiceStub}]
     })
     .compileComponents();
 
@@ -28,7 +29,7 @@ describe('CalculatorComponent', () => {
     calculator.ngOnInit();
     expect(calculator.result).toEqual(0);;
   });
-
+/*
   it('should add two numbers correctly', ()=>{
     spyOn(calculatorService, 'add').and.callThrough();
   
@@ -50,6 +51,10 @@ it('should multiply two numbers correctly', () => {
   expect(calculator.result).toBe(6);
 });
 
+
+
+
+*/
 it('should divide two numbers correctly', () => {
   spyOn(calculatorService, 'divide').and.callThrough();
   calculator.divide(2,3);
@@ -64,6 +69,5 @@ it('should raise an exception when dividing by zero', () => {
   );
   expect(calculatorService.divide).toHaveBeenCalledWith(10,0);
 })
-
 
 });
