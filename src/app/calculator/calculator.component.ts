@@ -13,7 +13,7 @@ import { ColorChangeDirective } from '../color-change.directive';
 export class CalculatorComponent {
   
  
-  result!: number;
+  result!: number|Error;
   color: string = 'red';
   constructor(private calculatorService: CalculatorService){}
   ngOnInit() {

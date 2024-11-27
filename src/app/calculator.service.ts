@@ -16,7 +16,7 @@ export class CalculatorService {
   multiply(a:number, b:number): number {
     return a * b;
   }
-  divide(a:number, b:number): number {
+  divide(a:number, b:number): number | Error {
     return a / b;
   }
 }

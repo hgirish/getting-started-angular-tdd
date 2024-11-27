@@ -2,6 +2,8 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CalculatorComponent } from './calculator.component';
 import { CalculatorService } from '../calculator.service';
+import { CalculatorServiceStub } from '../../core/stubs/calculator.service.stub';
+
 
 
 describe('CalculatorComponent', () => {
@@ -12,7 +14,9 @@ describe('CalculatorComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CalculatorComponent],
-      providers: [{provide: CalculatorService, useValue: calculatorServiceStub}]
+      providers: [
+        {provide: CalculatorService, useClass: CalculatorServiceStub}
+      ]
     })
     .compileComponents();
 
@@ -29,7 +33,7 @@ describe('CalculatorComponent', () => {
     calculator.ngOnInit();
     expect(calculator.result).toEqual(0);;
   });
-/*
+
   it('should add two numbers correctly', ()=>{
     spyOn(calculatorService, 'add').and.callThrough();
   
@@ -37,7 +41,7 @@ describe('CalculatorComponent', () => {
     expect(calculatorService.add).toHaveBeenCalledWith(2,3);
     expect(calculator.result).toBe(5);
   });
-it('should substract two numbers correctly', () => {
+it('should subtract two numbers correctly', () => {
   spyOn(calculatorService, 'subtract').and.callThrough();
   calculator.subtract(2,3);
   expect(calculatorService.subtract).toHaveBeenCalledWith(2,3);
@@ -54,7 +58,7 @@ it('should multiply two numbers correctly', () => {
 
 
 
-*/
+
 it('should divide two numbers correctly', () => {
   spyOn(calculatorService, 'divide').and.callThrough();
   calculator.divide(2,3);
@@ -69,5 +73,6 @@ it('should raise an exception when dividing by zero', () => {
   );
   expect(calculatorService.divide).toHaveBeenCalledWith(10,0);
 })
+
 
 });
