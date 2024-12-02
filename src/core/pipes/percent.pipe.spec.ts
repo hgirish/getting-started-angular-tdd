@@ -6,5 +6,30 @@ describe('PercentPipe', () => {
     const pipe = new PercentPipe();
     expect(pipe).toBeTruthy();
   });
+
+  it('should format a positive number to a percentage string', () => {
+    const input = 123;
+    const output = new PercentPipe().transform(input);
+    expect(output).toBe('12300%');
+  })
+
+  it('should format a negative number to a percentage string', () => {
+    const input = -123;
+    const output = new PercentPipe().transform(input);
+    expect(output).toBe('-12300%');
+  })
+
+  it('should format a decimal number to a percentage string', () => {
+    const input = -123.45;
+    const output = new PercentPipe().transform(input);
+    expect(output).toBe('-12345%');
+  })
+
+  it('should retunn an Error when the value is not a number NaN', () => {
+    const input = NaN;
+    const output = new PercentPipe().transform(input);
+    expect(output).toBe('Error');
+  })
+
 });
 

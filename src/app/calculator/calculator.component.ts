@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CalculatorService } from '../calculator.service';
 import { ColorChangeDirective } from '../color-change.directive';
+import { PercentPipe } from '../../core/pipes/percent.pipe';
 
 @Component({
     selector: 'app-calculator',
-    imports: [ColorChangeDirective,],
+    imports: [ColorChangeDirective, PercentPipe,],
     providers: [],
     templateUrl: './calculator.component.html',
     styleUrl: './calculator.component.css'
