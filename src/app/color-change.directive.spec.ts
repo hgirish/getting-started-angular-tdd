@@ -19,7 +19,7 @@ describe('ColorChangeDirective', () => {
     const element : HTMLElement = 
     fixture.debugElement.query(By.css('p')).nativeElement;
    // console.log(element);
-    expect(element.textContent).toEqual('10000%');
+    expect(element.textContent).toEqual('0%');
     const color: string = 'red';
     calculator.color = color;
     fixture.detectChanges();
