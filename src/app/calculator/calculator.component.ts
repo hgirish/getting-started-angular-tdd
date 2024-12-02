@@ -3,12 +3,11 @@ import { CalculatorService } from '../calculator.service';
 import { ColorChangeDirective } from '../color-change.directive';
 
 @Component({
-  selector: 'app-calculator',
-  standalone: true,
-  imports: [ColorChangeDirective,],
-  providers:[],  
-  templateUrl: './calculator.component.html',
-  styleUrl: './calculator.component.css'
+    selector: 'app-calculator',
+    imports: [ColorChangeDirective,],
+    providers: [],
+    templateUrl: './calculator.component.html',
+    styleUrl: './calculator.component.css'
 })
 export class CalculatorComponent {
   
