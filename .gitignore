@@ -45,3 +45,5 @@ Thumbs.db
 
 .nx/cache
 .nx/workspace-data
+.env
+node_modules
