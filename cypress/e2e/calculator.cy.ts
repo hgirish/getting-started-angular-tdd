@@ -1,11 +1,7 @@
 describe('Calculator Functionality', () => {
   context('Addition', () => {
     it('adds two positive numbers correctly', () => {
-      cy.visit('http://localhost:4200/')
-      cy.get('input').first().type('5')
-      cy.get('select').select('+').should('have.value', '+')
-      cy.get('input').last().type('5')
-      cy.get('button').click()
+      cy.performCalculation('5', '+', '5')
       cy.get('p').should('have.text', '10')
     })
 

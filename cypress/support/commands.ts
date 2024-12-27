@@ -35,3 +35,21 @@
 //     }
 //   }
 // }
+
+Cypress.Commands.add('performCalculation', (firstNumber, operator, secondNumber) => {
+  cy.visit('http://localhost:4200/')
+  cy.get('input').first().type(firstNumber)
+  cy.get('select').select(operator).should('have.value', operator)
+  cy.get('input').last().type(secondNumber)
+  cy.get('button').click()
+})
+
+declare namespace Cypress {
+  interface Chainable<Subject = any> {
+    performCalculation(
+      firstNumber: string,
+      operator: string,
+      secondNumber: string
+    ): Chainable<any>
+  }
+}
