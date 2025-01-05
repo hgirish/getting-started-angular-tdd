@@ -25,6 +25,7 @@ export class CalculatorComponent {
       operator: new FormControl(null, [Validators.required]),
     })
   }
+
   add(a: number, b: number): void {
     this.result = this.calculatorService.add(a, b)
   }
@@ -44,29 +45,26 @@ export class CalculatorComponent {
     this.result = this.calculatorService.calculateSquareRoot(value)
   }
   calculate() {
-    if (this.calculatorForm.get('operator')?.value === '+') {
-      this.add(
-        this.calculatorForm.get('operand1')?.value,
-        this.calculatorForm.get('operand2')?.value
-      )
-    }
-    if (this.calculatorForm.get('operator')?.value === '-') {
-      this.subtract(
-        this.calculatorForm.get('operand1')?.value,
-        this.calculatorForm.get('operand2')?.value
-      )
-    }
-    if (this.calculatorForm.get('operator')?.value === '*') {
-      this.multiply(
-        this.calculatorForm.get('operand1')?.value,
-        this.calculatorForm.get('operand2')?.value
-      )
-    }
-    if (this.calculatorForm.get('operator')?.value === '/') {
-      this.divide(
-        this.calculatorForm.get('operand1')?.value,
-        this.calculatorForm.get('operand2')?.value
-      )
+    const operator = this.calculatorForm.get('operator')?.value
+    const operand1 = this.calculatorForm.get('operand1')?.value
+    const operand2 = this.calculatorForm.get('operand2')?.value
+    if (!operator || !operand1 || !operand2) return
+    switch (operator) {
+      case '+':
+        this.add(operand1, operand2)
+        break
+      case '-':
+        this.subtract(operand1, operand2)
+        break
+      case '*':
+        this.multiply(operand1, operand2)
+        break
+      case '/':
+        this.divide(operand1, operand2)
+        break
+      default:
+        console.error(`Unsupported operator ${operator}`)
+        break
     }
   }
 }
